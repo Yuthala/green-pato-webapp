@@ -34,7 +34,20 @@ const ProductList = () => {
 	const {tg, queryId} = useTelegram();
 
 
-	const onSendData = useEffect(() => {
+	// const onSendData = useEffect(() => {
+	// 	alert('On send data')
+    //     const data = {
+    //         products: addedItems,
+    //         totalPrice: getTotalPrice(addedItems),
+    //         queryId,
+    //     }
+		
+	// 	//1.3 Вызов функции передачи объекта в Telegram 
+    //    tg.sendData(JSON.stringify(data));
+    // }, [products, getTotalPrice(addedItems)]);
+
+
+	const onSendData = () => {
 		alert('On send data')
         const data = {
             products: addedItems,
@@ -44,8 +57,7 @@ const ProductList = () => {
 		
 		//1.3 Вызов функции передачи объекта в Telegram 
        tg.sendData(JSON.stringify(data));
-    }, [products, getTotalPrice(addedItems)]);
-
+    };
 
 
 // debugging alert
