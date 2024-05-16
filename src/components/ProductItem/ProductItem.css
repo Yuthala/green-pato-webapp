@@ -9,7 +9,7 @@
 .productitem {
 	display: flex;
 	flex-direction: column;
-	gap: 3vh;
+	gap: 1vh;
 	/* border: 1px solid lightblue; */
 	border-radius: 20px;
 	padding: 20px;
@@ -54,7 +54,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 2vw;
-	margin: 3vh 0;
+	margin: 2vh 0;
 	font-size: .9em;
 }
 
@@ -69,6 +69,7 @@
 	justify-content: center;
 	align-items: center;
 	font-size: .9em;
+	color: var(--accent);
 }
 
 .add-btn {
@@ -78,10 +79,11 @@
 .btn {
 	margin-left: 0;
 	width: 8vw;
-	height: 8vh;
+	height: 6vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	line-height: .9em;
 	font-size: .9em;
+	color: var(--primary);
 }
