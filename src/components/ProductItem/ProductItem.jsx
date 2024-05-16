@@ -19,9 +19,7 @@ import './ProductItem.css';
 
 	return (
 		<div className={'product' + className}>
-			{/* поле с количеством */}
-			<span className={`${count !== 0 ? "card__badge" : "card__badge--hidden"}`}
-	  	>{count}</span>
+
 
 			<div className={'img'}><img src={img}/></div>
 			<div className={'title'}>{title}</div>
@@ -31,6 +29,9 @@ import './ProductItem.css';
 			{/* контейнер с кнопками + - */}
 			<div className="btn-container">
 				<Button title={'+'} type={'add'} onClick={handleIncrement} />
+
+				{/* поле с количеством */}
+				<div className={`${count !== 0 ? "card__badge" : "card__badge--hidden"}`}>{count}</div>
 
 				{count !== 0 ? (
 				<Button title={'-'} type={'remove'} onClick={handleDecrement} />
