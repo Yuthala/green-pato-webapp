@@ -88,69 +88,19 @@ const ProductList = () => {
 	
 
 	//КОРЗИНА
-	//функция увеличения количества товара в корзине
-		const increase = (product) => {
 
-			// setAddedItems((addedItems) => {
-			// 	return addedItems.map((product) => {
-			// 		if (product.id === id) {
-			// 			return {
-			// 				...product,
-			// 					count: product.count + 1,
-			// 			};
-			// 		}
-			// 		return product;
-			// 	})
-			// })
-		}
-
-	//функция уменьшения количества товара в корзине
-	const decrease = (product) => {
-
-		// setAddedItems((addedItems) => {
-		// 	return addedItems.map((product) => {
-		// 		if (product.id === id) {;
-
-		// 			return {
-		// 				...product,
-		// 					count: product.count - 1 < 1 ? product.count - 1 : 1,
-		// 			};
-		// 		}
-		// 		return product;
-		// 	})
-		// })
-	}
-
-	// const onAdd = (product) => { // TODO: Add Count Increase Decrease logic
-	// 	const alreadyAdded = addedItems.find(item => item.id === product.id);
-	// 	let newItems = [];
-		
-	// 	if(alreadyAdded) {
-	// 		//newItems = addedItems.filter(item => item.count += 1);
-	// 	const foundItem = addedItems.find(function(item) {
-	// 		return item.id === product.id
-	// 	})
-	// 	foundItem.count += 1
-	// 	newItems = addedItems
-
-	// 	} else {
-	// 		newItems = [...addedItems, product];
-	// 	}
-
-	const onAdd = (product) => {
+	const onRemove = (product) => {
 		const alreadyAdded = addedItems.find((item) => item.id === product.id);
 		let newItems =[];
 
-		if (alreadyAdded) {
-			newItems = addedItems.map((item) => 
-					item.id === product.id ? {...alreadyAdded, quantity: alreadyAdded.quantity + 1} : item
-				)
+		if (alreadyAdded.quantity === 1) {
+			newItems = addedItems.filter((item) => item.id !== product.id);
 		} else {
-			newItems = [...addedItems, {...product, quantity: 1}];
+			newItems = addedItems.map((item) => 
+				item.id === product.id ? {...alreadyAdded, quantity: alreadyAdded.quantity - 1} : item
+			)
 		}
-
-		console.log(addedItems.length);
-
+		
 		setAddedItems(newItems)
 
 		if(newItems.length === 0) {
@@ -164,8 +114,30 @@ const ProductList = () => {
 	};
 
 
-	const onRemove = (product) => {
-		
+	const onAdd = (product) => {
+		const alreadyAdded = addedItems.find((item) => item.id === product.id);
+		let newItems =[];
+
+		if (alreadyAdded) {
+			newItems = addedItems.map((item) => 
+					item.id === product.id ? {...alreadyAdded, quantity: alreadyAdded.quantity + 1} : item
+				)
+		} else {
+			newItems = [...addedItems, {...product, quantity: 1}];
+		};
+
+	
+
+	setAddedItems(newItems)
+
+		if(newItems.length === 0) {
+			tg.MainButton.hide();
+		} else {
+			tg.MainButton.show();
+			tg.MainButton.setParams({
+				text: `Купить ${getTotalPrice(newItems)}`
+			})
+		}
 	};
 
 
