@@ -47,11 +47,11 @@ const ProductList = () => {
     // }, [products, getTotalPrice(addedItems)]);
 
 	const onSendData = useCallback(() => {
-		alert('On send data')
+		// alert('On send data')
         const data = {
             products: addedItems,
             totalPrice: getTotalPrice(addedItems),
-            queryId,
+            // queryId,
         }
 		
 		//1.3 Вызов функции передачи объекта в Telegram 
