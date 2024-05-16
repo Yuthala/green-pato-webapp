@@ -9,7 +9,7 @@
 .productitem {
 	display: flex;
 	flex-direction: column;
-	gap: 6vh 4vw;
+	gap: 3vh;
 	/* border: 1px solid lightblue; */
 	border-radius: 20px;
 	padding: 10px 20px;
