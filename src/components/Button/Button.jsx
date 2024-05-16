@@ -1,12 +1,6 @@
 import React from "react";
 import './Button.css';
 
-// const Button = (props) => {
-//     return (
-//         <button {...props} className={'button ' + props.className}/>
-//     );
-// };
-
 function Button({type, title, disable, onClick}) {
     return (
       <button className={`btn ${

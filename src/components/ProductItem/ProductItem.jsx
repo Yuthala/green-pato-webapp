@@ -1,11 +1,6 @@
 import React, { useState }from "react";
 import Button from "../Button/Button";
 import './ProductItem.css';
-// import IncDecCounter from './../IncDecCounter/IncDecCounter';
-// import Count from './../Count/Count';
-// import QtyField from "../Counter/QtyField/QtyField";
-// import PlusButton from "../Counter/PlusButton/PlusButton";
-
 
 	const ProductItem = ({ product, className, onAdd, onRemove })=> {
 		const [count, setCount] = useState(0);

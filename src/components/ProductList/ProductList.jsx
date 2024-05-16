@@ -2,12 +2,6 @@ import React, {useEffect, useState, useCallback} from "react";
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
 import { useTelegram } from '../../hooks/useTelegram';
-//import Button from './../Button/Button';
-//import { orderCartData } from '../../hooks/CustomerData';
-// import Form from './../Form/Form';
-//import useStore from "use-global-hook";
-
-
 
 // TODO:Вынести в базу данных
 const products = [
@@ -100,7 +94,7 @@ const ProductList = () => {
 				item.id === product.id ? {...alreadyAdded, quantity: alreadyAdded.quantity - 1} : item
 			)
 		}
-		
+
 		setAddedItems(newItems)
 
 		if(newItems.length === 0) {
