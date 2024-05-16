@@ -9,8 +9,12 @@
 } */
 
 :root {
-	--primary-color: #e0c521;
-	--primary-accent: tomato;
+    --primary: #fff;
+    --accent: #504842;
+    --tint: #AB3541;
+    --background: #B4C277;
+    --text-background: #F9FBE9;
+	--light-brown: #AD8945;
 }
 
 .btn {
@@ -27,11 +31,11 @@
 }
 
 .btn.add {
-	background-color: var(--primary-color);
+	background-color: var(--tint);
 }
 
 .btn.remove {
-	background-color: var(--primary-accent);
+	background-color: var(--light-brown);
 }
 
 .btn.checkout {

@@ -16,7 +16,8 @@
 }
 
 body {
-  background: var(--tg-theme-bg-color);
-  color: var(--accent);  /* color: var(--tg-theme-text-color); */
+  /* background: var(--tg-theme-bg-color); */
+  background-color: var(--background);
+  color: var(--primary);  /* color: var(--tg-theme-text-color); */
   font-family: "Raleway", sans-serif;
 }

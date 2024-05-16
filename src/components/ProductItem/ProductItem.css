@@ -12,8 +12,8 @@
 	gap: 3vh;
 	/* border: 1px solid lightblue; */
 	border-radius: 20px;
-	padding: 10px 20px;
-	background-color: var(--background);
+	padding: 20px;
+	background-color: var(--accent);
 }
 
 .productitem:nth-child(odd) {
@@ -27,7 +27,7 @@
 .img img {
 	width: 100%;
 	background: lightgray;
-	height: 32vh;
+	height: 25vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
