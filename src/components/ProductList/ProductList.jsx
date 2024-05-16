@@ -46,8 +46,7 @@ const ProductList = () => {
     //    tg.sendData(JSON.stringify(data));
     // }, [products, getTotalPrice(addedItems)]);
 
-
-	const onSendData = () => {
+	const onSendData = useCallback(() => {
 		alert('On send data')
         const data = {
             products: addedItems,
@@ -57,8 +56,7 @@ const ProductList = () => {
 		
 		//1.3 Вызов функции передачи объекта в Telegram 
        tg.sendData(JSON.stringify(data));
-    };
-
+    }, [products, getTotalPrice(addedItems)]);
 
 // debugging alert
 	// useEffect(()=> {
