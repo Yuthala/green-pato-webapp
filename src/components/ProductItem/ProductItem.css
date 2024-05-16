@@ -16,10 +16,18 @@
 	background-color: var(--background);
 }
 
+.productitem:nth-child(odd) {
+	margin-left: 1vw;
+}
+
+.productitem:nth-child(even) {
+	margin-rigth: 1vw;
+}
+
 .img img {
 	width: 100%;
 	background: lightgray;
-	height: 20vh;
+	height: 35vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
@@ -46,11 +54,12 @@
 	justify-content: center;
 	align-items: center;
 	gap: 2vw;
+	margin-top: 3vh;
 }
 
 .card__badge {
-	width: 4vw;
-	height: 6vh;
+	width: 8vw;
+	height: 8vh;
 	background-color: var(--text-background);
 	border: 1px solid var(--accent);
 	border-radius: 8px;
@@ -66,9 +75,10 @@
 
 .btn {
 	margin-left: 0;
-	width: 6vw;
-	height: 6vh;
+	width: 8vw;
+	height: 8vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	line-height: .6em;
 }
