@@ -60,7 +60,7 @@
 
 .card__badge {
 	width: 8vw;
-	height: 8vh;
+	height: 6vh;
 	background-color: var(--text-background);
 	border: 1px solid var(--accent);
 	border-radius: 8px;
