@@ -12,10 +12,6 @@ import './ProductItem.css';
 
 		const { img, title, description, price, id } = product;
 
-		// const onAddHandler = () => {
-		// 	onAdd(product);
-		// }
-
 		const handleIncrement = () => {
 			setCount(count+1);
 			onAdd(product);
