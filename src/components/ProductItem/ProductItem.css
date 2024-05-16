@@ -27,7 +27,7 @@
 .img img {
 	width: 100%;
 	background: lightgray;
-	height: 35vh;
+	height: 28vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
@@ -54,7 +54,8 @@
 	justify-content: center;
 	align-items: center;
 	gap: 2vw;
-	margin-top: 3vh;
+	margin: 3vh 0;
+	font-size: .6em;
 }
 
 .card__badge {
@@ -81,4 +82,5 @@
 	justify-content: center;
 	align-items: center;
 	line-height: .6em;
+	font-size: .6em;
 }
