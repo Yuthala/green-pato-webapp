@@ -10,6 +10,7 @@
 
 :root {
 	--primary-color: #e0c521;
+	--primary-accent: tomato;
 }
 
 .btn {
@@ -30,7 +31,7 @@
 }
 
 .btn.remove {
-	background-color: tomato;
+	background-color: var(--primary-accent);
 }
 
 .btn.checkout {
