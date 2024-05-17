@@ -40,7 +40,6 @@ const Form =() => {
 			}
 		}, [onSendData])
 
-	//цвет, текст кнопки, TODO: Что такое useEffect ??
 	// 1.4 Установка текста для Главной кнопки
 	useEffect( () => {
 		tg.MainButton.setParams( {
@@ -51,8 +50,7 @@ const Form =() => {
 
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
 	useEffect( () => {
-		// TODO: изменить на tg.onToggleButton?? Протестировать!!
-		if(!street || !name) {
+		if(!street || !name || !phone) {
 			tg.MainButton.hide();
 		} else {
 			tg.MainButton.show();
@@ -81,7 +79,7 @@ const Form =() => {
 				className={'input'} 
 				type="text" 
 				placeholder={'Ваше имя'}
-				pattern="[а-яА-ЯёЁa-zA-Z0-9]{3,20}"
+				pattern="[A-Za-zА-Яа-яЁё]{3,20}"
 				maxlength="20" 
 				value={name}
 				onChange={onChangeName}
