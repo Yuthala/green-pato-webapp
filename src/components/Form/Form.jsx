@@ -44,7 +44,8 @@ const Form =() => {
 	// 1.4 Установка текста для Главной кнопки
 	useEffect( () => {
 		tg.MainButton.setParams( {
-			text: 'Отправить данные'
+			text: 'Отправить данные',
+			color: '#AD8945'
 		})
 	}, [])
 
