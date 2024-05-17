@@ -81,23 +81,31 @@ const Form =() => {
 				className={'input'} 
 				type="text" 
 				placeholder={'Ваше имя'}
+				pattern="[а-яА-ЯёЁa-zA-Z0-9]{3,20}"
+				maxlength="20" 
 				value={name}
 				onChange={onChangeName}
+				required
 			/>
 			<input 
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
+				maxlength="11"
 				value={phone}
 				onChange={onChangePhone}
+				required
 			/>
 
 			<input
 				className={'input'} 
 				type="text" 
 				placeholder={'Адрес'}
+				pattern="[а-яА-ЯёЁa-zA-Z0-9]{3,20}"
+				maxlength="100"
 				value={street}
 				onChange={onChangeStreet}
+				required
 			/>
 {/* 
 			<select value={phone} onChange={onChangephone} className={'select'}>
