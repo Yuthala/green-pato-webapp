@@ -79,7 +79,8 @@ const Form =() => {
 				className={'input'} 
 				type="text" 
 				placeholder={'Ваше имя'}
-				pattern="[A-Za-zА-Яа-яЁё]{3,20}"
+				pattern="[A-Za-zА-Яа-яЁё]{2,20}"
+				minlength="2"
 				maxlength="20" 
 				value={name}
 				onChange={onChangeName}
@@ -89,7 +90,8 @@ const Form =() => {
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
-				pattern="[0-9]{5,11}"
+				pattern="[0-9]{10,11}"
+				minlength="10"
 				maxlength="11"
 				value={phone}
 				onChange={onChangePhone}
@@ -101,6 +103,7 @@ const Form =() => {
 				type="text" 
 				placeholder={'Адрес'}
 				pattern="[а-яА-ЯёЁa-zA-Z0-9]{6,100}"
+				minlength="6"
 				maxlength="100"
 				value={street}
 				onChange={onChangeStreet}
