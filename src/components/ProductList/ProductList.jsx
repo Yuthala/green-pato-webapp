@@ -41,9 +41,9 @@ const ProductList = () => {
     // }, [products, getTotalPrice(addedItems)]);
 
 
-	useEffect( ()=> {
-		tg.WebApp.expand()
-	}, [])
+	// useEffect( ()=> {
+	// 	tg.WebApp.expand()
+	// }, [])
 	
 	const onSendData = useCallback(() => {
 		// alert('On send data')
