@@ -91,6 +91,7 @@ const Form =() => {
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
+				pattern="[0-9]{5,11}"
 				maxlength="11"
 				value={phone}
 				onChange={onChangePhone}
@@ -101,7 +102,7 @@ const Form =() => {
 				className={'input'} 
 				type="text" 
 				placeholder={'Адрес'}
-				pattern="[а-яА-ЯёЁa-zA-Z0-9]{3,20}"
+				pattern="[а-яА-ЯёЁa-zA-Z0-9]{10,1000}"
 				maxlength="100"
 				value={street}
 				onChange={onChangeStreet}
