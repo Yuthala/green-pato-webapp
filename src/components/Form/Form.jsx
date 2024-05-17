@@ -102,7 +102,7 @@ const Form =() => {
 				className={'input'} 
 				type="text" 
 				placeholder={'Адрес'}
-				pattern="[а-яА-ЯёЁa-zA-Z0-9]{10,1000}"
+				pattern="[а-яА-ЯёЁa-zA-Z0-9]{6,100}"
 				maxlength="100"
 				value={street}
 				onChange={onChangeStreet}
