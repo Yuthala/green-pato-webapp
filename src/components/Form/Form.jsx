@@ -1,8 +1,6 @@
 import React, {useEffect, useState, useCallback} from "react";
 import './Form.css';
 import { useTelegram } from "../../hooks/useTelegram";
-//import { orderCartData } from '../../hooks/CustomerData';
-//import { cartData } from "../ProductList/ProductList";
 
 
 
@@ -29,9 +27,9 @@ const Form =() => {
             phone,
         };
 		
-		// 1.3 Вызов функции передачи объекта в Telegram 
+	// 1.3 Вызов функции передачи объекта в Telegram 
         tg.sendData(JSON.stringify(data));
-    }, [name, street, phone]) // TODO - Зачем нужен массив в useCallBack??
+    }, [name, street, phone])
 
 	useEffect( ()=> {
 		tg.onEvent('mainButtonClicked', onSendData)
@@ -40,7 +38,7 @@ const Form =() => {
 			}
 		}, [onSendData])
 
-	// 1.4 Установка текста для Главной кнопки
+	// 1.4 Установка текста и цвета для Главной кнопки
 	useEffect( () => {
 		tg.MainButton.setParams( {
 			text: 'Отправить данные',
@@ -49,17 +47,40 @@ const Form =() => {
 	}, [])
 
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
-	useEffect( () => {
-		if(!street || !name || !phone) {
-			tg.MainButton.hide();
-		} else {
-			tg.MainButton.show();
-		}
-	}, [name, street])
+	// useEffect( () => {
+	// 	if(!street || !name || !phone) {
+	// 		tg.MainButton.hide();
+	// 	} else {
+	// 		tg.MainButton.show();
+	// 	}
+	// }, [name, street, phone])
 
-	// 1.6 Как обработать изменение значения объектов в Форме
+	//Действия с кнопкой 
+	const blurHandler = (e) => {
+		switch (e.target.name) {
+			case "name":
+				setNameDirty(true);
+				break;
+			case "phone":
+				setPhoneDirty(true);
+				break;
+			case "address":
+				setAddressDirty(true);
+				break;
+		}
+	}
+
+	// 1.6 Обработка изменения значения объектов в Форме
 	const onChangeName = (e) => {
-		setname(e.target.value)
+		setname(e.target.value);
+		const re = /^[А-Яа-яЁё\s]+$/;
+		// return re.test(String(name).toLowerCase());
+		//если то что находится в инпуте в данный момент не соответствует регулярному выражению
+		if(!re.test(String(e.target.value).toLowerCase())) {
+			setNameError('Только русские буквы')
+		} else {
+			setNameError('')
+		}
 	}
 
 	const onChangeStreet= (e) => {
@@ -70,50 +91,59 @@ const Form =() => {
 		setPhone(e.target.value)
 	}
 
-	// Отрисовка Формы на странице
+	//1.7 Валидация формы
+	//Состояние, отражающее был ли активен input
+	const [nameDirty, setNameDirty] = useState(false)
+	const [phoneDirty, setPhoneDirty] = useState(false)
+	const [addressDirty, setAddressDirty] = useState(false)
+	//Состояние, отражающее наличие ошибки
+	const [nameError, setNameError] = useState('Поле не может быть пустым')
+	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
+	const [addressError, setAddressError] = useState('Поле не может быть пустым')
+
+	//1.8 Отрисовка Формы на странице
 	return (
 		<div className={"form"}>
 			<h3>Введите ваши данные</h3>
 
+			//если поле name активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю
+			{(nameDirty && nameError) && <div style={{color: 'red'}}>{nameError}</div>}
 			<input 
+				name="name"
 				className={'input'} 
 				type="text" 
 				placeholder={'Ваше имя'}
-				pattern="[A-Za-zА-Яа-яЁё]{2,20}"
-				minlength="2"
 				maxlength="20" 
 				value={name}
-				onChange={onChangeName}
-				required
+				onChange={e => onChangeName(e)}
+				onBlur={e => blurHandler(e)}
 			/>
+
+			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю
+			{(phoneDirty && phoneError) && <div style={{color: 'red'}}>{phoneError}</div>}
 			<input 
+			name="phone"
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
-				pattern="[0-9]{10,11}"
-				minlength="10"
 				maxlength="11"
 				value={phone}
 				onChange={onChangePhone}
-				required
+				onBlur={e => blurHandler(e)}
 			/>
 
+			//если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю
+			{(addressDirty && addressError) && <div style={{color: 'red'}}>{addressError}</div>}
 			<input
+				name="address"
 				className={'input'} 
 				type="text" 
 				placeholder={'Адрес'}
-				pattern="[а-яА-ЯёЁa-zA-Z0-9]{6,100}"
-				minlength="6"
 				maxlength="100"
 				value={street}
 				onChange={onChangeStreet}
-				required
+				onBlur={e => blurHandler(e)}
 			/>
-{/* 
-			<select value={phone} onChange={onChangephone} className={'select'}>
-				<option value={'physical'}>Физ. лицо</option>
-				<option value={'legal'}>Юр. лицо</option>
-			</select> */}
 		</div>
 	);
 };
