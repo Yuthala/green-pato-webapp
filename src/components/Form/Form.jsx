@@ -26,8 +26,7 @@ const Form =() => {
 	const [nameError, setNameError] = useState('Поле не может быть пустым')
 	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
 	const [streetError, setStreetError] = useState('Поле не может быть пустым')
-	//Состояние корректности всей формы
-	const [formValid, setFormValid] = useState(false)
+
 
 	// 1.2 Передача данных в Telegram
     const onSendData = useCallback(() => {
@@ -61,10 +60,8 @@ const Form =() => {
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
 	useEffect( () => {
 		if(nameError || phoneError || streetError) {
-			setFormValid(false)
 			tg.MainButton.hide();
 		} else {
-			setFormValid(true)
 			tg.MainButton.show();
 		}
 	}, [nameError, phoneError, streetError])
@@ -100,7 +97,7 @@ const Form =() => {
 
 	const onChangePhone = (e) => {
 		setPhone(e.target.value);
-		const re = /[0-9]{5,10}/;
+		const re = /[0-9]{10,11}/;
 
 		if(!re.test(String(e.target.value).toLowerCase())) {
 			setPhoneError('Только цифры')
@@ -145,7 +142,7 @@ const Form =() => {
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
-				maxlength="12"
+				maxlength="11"
 				value={phone}
 				onChange={e => onChangePhone(e)}
 				onBlur={e => blurHandler(e)}
