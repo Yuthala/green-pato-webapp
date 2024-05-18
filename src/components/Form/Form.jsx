@@ -146,7 +146,7 @@ const Form =() => {
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
-				maxlength="11"
+				maxlength="18"
 				value={phone}
 				onChange={e => onChangePhone(e)}
 				onBlur={e => blurHandler(e)}
