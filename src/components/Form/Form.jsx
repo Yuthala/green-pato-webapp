@@ -87,7 +87,7 @@ const Form =() => {
 		const re = /^[А-Яа-яЁё\s]+$/;
 		// return re.test(String(name).toLowerCase());
 
-		//если то что находится в инпуте в данный момент не соответствует регулярному выражению
+		//если то что находится в инпуте в данный момент не соответствует регулярному выражению > текст ошибки
 		if(!re.test(String(e.target.value).toLowerCase())) {
 			setNameError('Только русские буквы')
 		} else {
@@ -98,11 +98,9 @@ const Form =() => {
 	const onChangePhone = (e) => {
 		setPhone(e.target.value);
 		const re = /(?:\+|\d)[\d\-\(\) ]{9,}\d/g;
-		if(e.target.value.length < 10 || e.target.value.length > 18 ) {
-			setPhoneError('Введите ваш номер мобильного телефона')
-			if(!re.test(String(e.target.value).toLowerCase())) {
+
+		if(!re.test(String(e.target.value).toLowerCase())) {
 				setPhoneError('Проверьте, пожалуйста, корректность введенного номера')
-			} 
 		} else {
 			setPhoneError('')
 		}
@@ -125,41 +123,42 @@ const Form =() => {
 	return (
 		<div className={"form"}>
 			<h3>Введите ваши данные</h3>
+			<h4>необходимо заполнить все поля</h4>
 
 			{/* //если поле name активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(nameDirty && nameError) && <div style={{color: 'red'}}>{nameError}</div>}
+			{(nameDirty && nameError) && <div className="warning">{nameError}</div>}
 			<input 
 				name="name"
 				className={'input'} 
 				type="text" 
 				placeholder={'Ваше имя'}
-				maxlength="20" 
+				maxLength="20" 
 				value={name}
 				onChange={e => onChangeName(e)}
 				onBlur={e => blurHandler(e)}
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(phoneDirty && phoneError) && <div style={{color: 'red'}}>{phoneError}</div>}
+			{(phoneDirty && phoneError) && <div className="warning">{phoneError}</div>}
 			<input 
 			name="phone"
 				className={'input'} 
 				type="phone" 
 				placeholder={'Телефон'}
-				maxlength="18"
+				maxLength="18"
 				value={phone}
 				onChange={e => onChangePhone(e)}
 				onBlur={e => blurHandler(e)}
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(addressDirty && addressError) && <div style={{color: 'red'}}>{addressError}</div>}
+			{(addressDirty && addressError) && <div className="warning">{addressError}</div>}
 			<input
 				name="street"
 				className={'input'} 
 				type="text" 
 				placeholder={'Адрес'}
-				maxlength="100"
+				maxLength="100"
 				value={street}
 				onChange={e => onChangeStreet(e)}
 				onBlur={e => blurHandler(e)}
