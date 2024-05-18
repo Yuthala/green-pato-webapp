@@ -97,13 +97,17 @@ const Form =() => {
 
 	const onChangePhone = (e) => {
 		setPhone(e.target.value);
-		const re = /[0-9]{10,11}/;
-
-		if(!re.test(String(e.target.value).toLowerCase())) {
-			setPhoneError('Только цифры')
+		const re = /(?:\+|\d)[\d\-\(\) ]{9,}\d/g;
+		if(e.target.value.length < 10 || e.target.value.length > 18 ) {
+			setPhoneError('Введите ваш номер мобильного телефона')
+			if(!re.test(String(e.target.value).toLowerCase())) {
+				setPhoneError('Проверьте, пожалуйста, корректность введенного номера')
+			} 
 		} else {
 			setPhoneError('')
 		}
+
+
 	}
 
 	const onChangeStreet= (e) => {
