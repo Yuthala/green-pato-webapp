@@ -28,7 +28,7 @@
 .input {
 	width: 100%;
 	padding: 10px;
-	margin-top: 20px;
+	margin: 5px 0 15px 0;
 }
 
 .select {
@@ -37,7 +37,7 @@
 }
 
 .warning {
-	font-size: .8em;
+	font-size: .7em;
 	color: red;
 	margin-top: 2vh;
 }

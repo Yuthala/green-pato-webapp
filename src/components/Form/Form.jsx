@@ -100,7 +100,7 @@ const Form =() => {
 		const re = /(?:\+|\d)[\d\-\(\) ]{9,}\d/g;
 
 		if(!re.test(String(e.target.value).toLowerCase())) {
-				setPhoneError('Проверьте, пожалуйста, корректность введенного номера')
+				setPhoneError('Введите номер мобильного телефона')
 		} else {
 			setPhoneError('')
 		}
