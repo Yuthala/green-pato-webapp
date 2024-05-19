@@ -19,13 +19,15 @@ const Form =() => {
 
 	//1.7 Валидация формы
 	//Состояние, отражающее был ли активен input
-	// const [nameDirty, setNameDirty] = useState(false)
-	// const [phoneDirty, setPhoneDirty] = useState(false)
-	// const [addressDirty, setStreetDirty] = useState(false)
+	const [nameDirty, setNameDirty] = useState(false)
+	const [phoneDirty, setPhoneDirty] = useState(false)
+	const [addressDirty, setStreetDirty] = useState(false)
 	//Состояние, отражающее наличие ошибки
 	const [nameError, setNameError] = useState('Поле не может быть пустым')
 	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
 	const [streetError, setStreetError] = useState('Поле не может быть пустым')
+	//Состояние, отвечающее за валидность формы
+	const [formValid, setFormValid] = useState(false)
 
 
 	// 1.2 Передача данных в Telegram
@@ -58,28 +60,30 @@ const Form =() => {
 	}, [])
 
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
-	useEffect( () => {
+	useEffect( (formValid) => {
 		if(nameError || phoneError || streetError) {
-			tg.MainButton.hide();
+			setFormValid(false);
+			tg.MainButton.hide(!formValid);
 		} else {
-			tg.MainButton.show();
+			setFormValid(true);
+			tg.MainButton.show(formValid);
 		}
 	}, [nameError, phoneError, streetError])
 
-	//Действия с кнопкой 
-	// const blurHandler = (e) => {
-	// 	switch (e.target.name) {
-	// 		case "name":
-	// 			setNameDirty(true);
-	// 			break;
-	// 		case "phone":
-	// 			setPhoneDirty(true);
-	// 			break;
-	// 		case "street":
-	// 			setStreetDirty(true);
-	// 			break;
-	// 	}
-	// }
+	//Управление активностью инпутов
+	const blurHandler = (e) => {
+		switch (e.target.name) {
+			case "name":
+				setNameDirty(true);
+				break;
+			case "phone":
+				setPhoneDirty(true);
+				break;
+			case "street":
+				setStreetDirty(true);
+				break;
+		}
+	}
 
 	// 1.6 Обработка изменения значения объектов в Форме
 	const onChangeName = (e) => {
@@ -126,7 +130,7 @@ const Form =() => {
 			<h4>необходимо заполнить все поля</h4>
 
 			{/* //если поле name активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(nameError) && <div className="warning">{nameError}</div>}
+			{(nameDirty && nameError) && <div className="warning">{nameError}</div>}
 			<input 
 				name="name"
 				className={'input'} 
@@ -135,11 +139,11 @@ const Form =() => {
 				maxLength="20" 
 				value={name}
 				onChange={e => onChangeName(e)}
-				// onBlur={e => blurHandler(e)}
+				onBlur={e => blurHandler(e)}
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(phoneError) && <div className="warning">{phoneError}</div>}
+			{(phoneDirty && phoneError) && <div className="warning">{phoneError}</div>}
 			<input 
 			name="phone"
 				className={'input'} 
@@ -148,11 +152,11 @@ const Form =() => {
 				maxLength="18"
 				value={phone}
 				onChange={e => onChangePhone(e)}
-				// onBlur={e => blurHandler(e)}
+				onBlur={e => blurHandler(e)}
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(addressError) && <div className="warning">{addressError}</div>}
+			{(addressDirty && addressError) && <div className="warning">{addressError}</div>}
 			<input
 				name="street"
 				className={'input'} 
@@ -161,7 +165,7 @@ const Form =() => {
 				maxLength="100"
 				value={street}
 				onChange={e => onChangeStreet(e)}
-				// onBlur={e => blurHandler(e)}
+				onBlur={e => blurHandler(e)}
 			/>
 		</div>
 	);
