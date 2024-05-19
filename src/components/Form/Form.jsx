@@ -19,9 +19,9 @@ const Form =() => {
 
 	//1.7 Валидация формы
 	//Состояние, отражающее был ли активен input
-	const [nameDirty, setNameDirty] = useState(false)
-	const [phoneDirty, setPhoneDirty] = useState(false)
-	const [addressDirty, setStreetDirty] = useState(false)
+	// const [nameDirty, setNameDirty] = useState(false)
+	// const [phoneDirty, setPhoneDirty] = useState(false)
+	// const [addressDirty, setStreetDirty] = useState(false)
 	//Состояние, отражающее наличие ошибки
 	const [nameError, setNameError] = useState('Поле не может быть пустым')
 	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
@@ -67,19 +67,19 @@ const Form =() => {
 	}, [nameError, phoneError, streetError])
 
 	//Действия с кнопкой 
-	const blurHandler = (e) => {
-		switch (e.target.name) {
-			case "name":
-				setNameDirty(true);
-				break;
-			case "phone":
-				setPhoneDirty(true);
-				break;
-			case "street":
-				setStreetDirty(true);
-				break;
-		}
-	}
+	// const blurHandler = (e) => {
+	// 	switch (e.target.name) {
+	// 		case "name":
+	// 			setNameDirty(true);
+	// 			break;
+	// 		case "phone":
+	// 			setPhoneDirty(true);
+	// 			break;
+	// 		case "street":
+	// 			setStreetDirty(true);
+	// 			break;
+	// 	}
+	// }
 
 	// 1.6 Обработка изменения значения объектов в Форме
 	const onChangeName = (e) => {
@@ -135,7 +135,7 @@ const Form =() => {
 				maxLength="20" 
 				value={name}
 				onChange={e => onChangeName(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
@@ -148,7 +148,7 @@ const Form =() => {
 				maxLength="18"
 				value={phone}
 				onChange={e => onChangePhone(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
@@ -161,7 +161,7 @@ const Form =() => {
 				maxLength="100"
 				value={street}
 				onChange={e => onChangeStreet(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 		</div>
 	);
