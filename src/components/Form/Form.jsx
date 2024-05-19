@@ -126,7 +126,7 @@ const Form =() => {
 			<h4>необходимо заполнить все поля</h4>
 
 			{/* //если поле name активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(nameDirty && nameError) && <div className="warning">{nameError}</div>}
+			{(nameError) && <div className="warning">{nameError}</div>}
 			<input 
 				name="name"
 				className={'input'} 
@@ -139,7 +139,7 @@ const Form =() => {
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(phoneDirty && phoneError) && <div className="warning">{phoneError}</div>}
+			{(phoneError) && <div className="warning">{phoneError}</div>}
 			<input 
 			name="phone"
 				className={'input'} 
@@ -152,7 +152,7 @@ const Form =() => {
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(addressDirty && addressError) && <div className="warning">{addressError}</div>}
+			{(addressError) && <div className="warning">{addressError}</div>}
 			<input
 				name="street"
 				className={'input'} 
