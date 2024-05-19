@@ -26,8 +26,6 @@ const Form =() => {
 	const [nameError, setNameError] = useState('Поле не может быть пустым')
 	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
 	const [streetError, setStreetError] = useState('Поле не может быть пустым')
-	//Состояние, отвечающее за валидность формы
-	const [formValid, setFormValid] = useState(false)
 
 
 	// 1.2 Передача данных в Telegram
@@ -62,10 +60,8 @@ const Form =() => {
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
 	useEffect( (formValid) => {
 		if(nameError || phoneError || streetError) {
-			setFormValid(false);
 			tg.MainButton.hide(!formValid);
 		} else {
-			setFormValid(true);
 			tg.MainButton.show(formValid);
 		}
 	}, [nameError, phoneError, streetError])
@@ -156,7 +152,7 @@ const Form =() => {
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(addressDirty && addressError) && <div className="warning">{addressError}</div>}
+			{(addressDirty && streetError) && <div className="warning">{streetError}</div>}
 			<input
 				name="street"
 				className={'input'} 
