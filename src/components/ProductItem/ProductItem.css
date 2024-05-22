@@ -88,7 +88,7 @@
 	color: var(--primary);
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 960px) {
     .btn-container{
 		margin-top: 4vh;
     }
