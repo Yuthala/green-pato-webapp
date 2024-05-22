@@ -53,26 +53,6 @@ const ProductList = () => {
        tg.sendData(JSON.stringify(data));
     }, [products, getTotalPrice(addedItems)]);
 
-// debugging alert
-	// useEffect(()=> {
-	// 	// const data = {
-    //     //     products: addedItems,
-    //     //     totalPrice: getTotalPrice(addedItems),
-    //     //     queryId
-    //     // }
-
-	// 	// alert(`My data products: ${data.products}, price: ${data.totalPrice}, queryId: ${data.queryId}`)
-
-	// 	tg.MainButton.onClick(onSendData)
-	// })
-
-	// useEffect( ()=> {
-	// 	tg.onEvent('mainButtonClicked', function() {
-	// 		window.location.href = "https://green-pato-test.greenpato.ru/form"
-	// 	})
-	// })
-
-
 	useEffect( ()=> {
 		tg.onEvent('mainButtonClicked', onSendData)
 			return ()=> {
@@ -122,9 +102,7 @@ const ProductList = () => {
 			newItems = [...addedItems, {...product, quantity: 1}];
 		};
 
-	
-
-	setAddedItems(newItems)
+	setAddedItems(newItems);
 
 		if(newItems.length === 0) {
 			tg.MainButton.hide();
@@ -140,7 +118,6 @@ const ProductList = () => {
 
 	return (
 		<div className={'list'}>
-			{/* <Button onClick={onSendData}>Тест</Button> */}
 			{products.map(product => (
 				<ProductItem
 					product={product}

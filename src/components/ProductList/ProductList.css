@@ -7,11 +7,12 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(2, 48vh);
+	grid-auto-flow: row;
 	gap: 2vh 2vw;
 }
 
-/* .item {
-	margin-right: 10px;
-	margin-bottom: 10px;
-} */
-
+@media screen and (max-width: 760px) {
+    .list{
+		grid-template-rows: repeat(2, 65vh);
+    }
+}
