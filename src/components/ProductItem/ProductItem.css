@@ -27,7 +27,7 @@
 .img img {
 	width: 100%;
 	background: lightgray;
-	min-height: 25vh;
+	height: 23vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
