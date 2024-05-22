@@ -104,13 +104,11 @@ const Form =() => {
 		} else {
 			setPhoneError('')
 		}
-
-
 	}
 
 	const onChangeStreet= (e) => {
 		setStreet(e.target.value);
-		const re = /^[?!,.а-яА-ЯёЁ0-9\s]+$/;
+		const re = /^[?!,.\/\-а-яА-ЯёЁ0-9\s]+$/;
 
 		if(!re.test(String(e.target.value).toLowerCase())) {
 			setStreetError('Допустимы русские буквы, цифры, знаки препинания')
@@ -135,7 +133,7 @@ const Form =() => {
 				maxLength="20" 
 				value={name}
 				onChange={e => onChangeName(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
@@ -148,7 +146,7 @@ const Form =() => {
 				maxLength="18"
 				value={phone}
 				onChange={e => onChangePhone(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
@@ -161,7 +159,7 @@ const Form =() => {
 				maxLength="100"
 				value={street}
 				onChange={e => onChangeStreet(e)}
-				onBlur={e => blurHandler(e)}
+				// onBlur={e => blurHandler(e)}
 			/>
 		</div>
 	);
