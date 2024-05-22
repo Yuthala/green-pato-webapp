@@ -17,17 +17,17 @@
 }
 
 .productitem:nth-child(odd) {
-	margin-left: 1vw;
+	margin-left: 2vw;
 }
 
 .productitem:nth-child(even) {
-	margin-right: 1vw;
+	margin-right: 2vw;
 }
 
 .img img {
 	width: 100%;
 	background: lightgray;
-	height: 23vh;
+	height: 22vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
