@@ -13,6 +13,6 @@
 
 @media screen and (max-width: 760px) {
     .list{
-		grid-template-rows: repeat(2, 65vh);
+		grid-template-rows: repeat(2, 55vh);
     }
 }
