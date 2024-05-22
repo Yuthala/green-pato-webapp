@@ -27,7 +27,7 @@
 .img img {
 	width: 100%;
 	background: lightgray;
-	height: 25vh;
+	max-height: 25vh;
 	margin: 0 auto;
 	object-fit: cover;
 	border-radius: 20px;
@@ -86,10 +86,4 @@
 	line-height: .9em;
 	font-size: .9em;
 	color: var(--primary);
-}
-
-@media screen and (min-width: 960px) {
-    .btn-container{
-		margin-top: 4vh;
-    }
 }

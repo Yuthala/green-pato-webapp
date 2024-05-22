@@ -6,13 +6,7 @@
 	gap: 10px; */
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 48vh);
+	grid-template-rows: repeat(2, 50vh);
 	grid-auto-flow: row;
 	gap: 2vh 2vw;
-}
-
-@media screen and (min-width: 960px) {
-    .list{
-		grid-template-rows: repeat(2, 55vh);
-    }
 }
