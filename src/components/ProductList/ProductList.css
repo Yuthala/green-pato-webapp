@@ -11,7 +11,7 @@
 	gap: 2vh 2vw;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 960px) {
     .list{
 		grid-template-rows: repeat(2, 55vh);
     }
