@@ -10,7 +10,7 @@ const Header = () => {
 	return (
 		<div className={'header'}>
 			<h1>Вас приветствует Фермерское хозяйство Green&nbsp;Pato</h1>
-			<img className="header-logo" src="img/logo.png" alt="logo" />
+			<img className="header-logo" src="img/logo.webp" alt="logo" />
 			<p>Предлагаем овощи высокого качества собственного производства с бесплатной доставкой</p>
 
 			<div className="banner">

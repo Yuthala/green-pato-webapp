@@ -1,15 +1,19 @@
 import React, {useEffect, useState, useCallback} from "react";
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
+import Header from './../../components/Header/Header';
 import { useTelegram } from '../../hooks/useTelegram';
 
 // TODO:Вынести в базу данных
+// В description не более 4 строк текста на desktop
 const products = [
-	{id: '1', title: 'Картофель', price: 75, description: 'сорт Импала, кг', img: "img/potatoes.jpg"},
-	{id: '2', title: 'Томаты', price: 150, description: 'сорт Розовые, кг', img: "img/tomatoes.jpg"},
-	{id: '3', title: 'Баклажаны', price: 80, description: 'сорт Алмаз, кг', img: "img/eggplant.jpg"},
-	{id: '4', title: 'Огурцы', price: 120, description: 'сорт ТСХ, 600 г', img: "img/cucumber.jpg"},
-	{id: '5', title: 'Лук', price: 60, description: 'сорт Штутгартер, 1 кг', img: "img/cucumber.jpg"}
+	{id: '1', title: 'Картофель красный', price: 70, description: 'сорт Белароза. Вкусный, среднерассыпчатый, подходит как для супов, так и для салатов/вторых блюд', img: "img/potatoes.webp"},
+	{id: '2', title: 'Лук репчатый', price: 60, description: 'сорт Штутгартер, классический желтый лук с выраженным острым вкусом', img: "img/onion.webp"},
+	{id: '3', title: 'Чеснок', price: 200, description: 'Размер 3-5 см, разные сорта. Подходит для закруток и длительного хранения', img: "img/garlic.webp"},
+	{id: '4', title: 'Кабачки цуккини', price: 50, description: 'Молодые цуккини с тонкой кожицей, молочными семенами и нежной мякотью', img: "img/zuccini.webp"},
+	{id: '5', title: 'Лук шалот', price: 120, description: 'Разновидность салатного лука с нежным, полуострым вкусом. Луковицы небольшие.', img: "img/shalot.webp"},
+	{id: '6', title: 'Огурец салатный', price: 80, description: 'Прекрасные вкусовые качества без горечи. Размер 10-12 см', img: "img/cucumber.webp"},
+	{id: '7', title: 'Огурец соленый', price: 150, description: 'Хрустящие огурчики засолочного сорта бочкового соления с чесноком и укропом', img: "img/salted-cucumb.webp"}
 ]
 
 // Подсчёт стоимости всех товаров в массиве с учётом количества
@@ -84,7 +88,7 @@ const ProductList = () => {
 		} else {
 			tg.MainButton.show();
 			tg.MainButton.setParams({
-				text: `Купить ${getTotalPrice(newItems)}`,
+				text: `Купить: ${getTotalPrice(newItems)} рублей`,
 				color: '#AD8945'
 			})
 		}
@@ -110,7 +114,7 @@ const ProductList = () => {
 		} else {
 			tg.MainButton.show();
 			tg.MainButton.setParams({
-				text: `Купить ${getTotalPrice(newItems)}`,
+				text: `Купить: ${getTotalPrice(newItems)} рублей`,
 				color: '#AD8945'
 			})
 		}
@@ -118,17 +122,21 @@ const ProductList = () => {
 
 
 	return (
-		<div className={'list'}>
-			{products.map(product => (
-				<ProductItem
-					product={product}
-					key={product.id}
-					onAdd={onAdd}
-					onRemove={onRemove}
-					className={'item'}
-				/>
-			))}
-		</div>
+		<>
+			<Header />
+				<div className={'list'}>
+				{products.map(product => (
+					<ProductItem
+						product={product}
+						key={product.id}
+						onAdd={onAdd}
+						onRemove={onRemove}
+						className={'item'}
+					/>
+				))}
+			</div>
+		</>
+	
 	);
 };
 

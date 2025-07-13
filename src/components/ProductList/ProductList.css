@@ -1,12 +1,23 @@
 .list {
-	/* display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 10px; */
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(2, 48vh);
+	/* grid-template-rows: repeat(2, 50vh); */
 	grid-auto-flow: row;
-	gap: 2vh 2vw;
+	gap: 10px;
+	padding-bottom: 20px;
+}
+
+@media (max-width: 540px) {
+	.list {
+		grid-template-columns: 1fr;
+		/* grid-template-rows: unset; */
+		gap: 16px 0;
+		padding: 0 16px;
+	}
+	.list > .productitem:nth-child(even) {
+		margin-right: 0;
+	}
+	.list > .productitem:nth-child(odd) {
+		margin-left: 0;
+	}
 }

@@ -1,21 +1,4 @@
-/* .button {
-	padding: 10px 15px;
-	background: var(--tg-theme-button-color);
-	color: var(--tg-theme-button-text-color);
-	border: none;
-	outline: none;
-	cursor: pointer;
-	border-radius: 10px;
-} */
 
-:root {
-    --primary: #fff;
-    --accent: #504842;
-    --tint: #AB3541;
-    --background: #B4C277;
-    --text-background: #F9FBE9;
-	--light-brown: #AD8945;
-}
 
 .btn {
 	padding: .6rem .8rem;
@@ -31,11 +14,19 @@
 }
 
 .btn.add {
-	background-color: var(--tint);
+	background-color: var(--text-background);
+	color: var(--tint);
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 0;
 }
 
 .btn.remove {
-	background-color: var(--light-brown);
+	background-color: var(--text-background);
+	color: var(--accent);
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 0;
 }
 
 .btn.checkout {

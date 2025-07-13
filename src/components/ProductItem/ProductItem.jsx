@@ -3,17 +3,17 @@ import Button from "../Button/Button";
 import './ProductItem.css';
 
 	const ProductItem = ({ product, className, onAdd, onRemove })=> {
-		const [count, setCount] = useState(0);
+		let [count, setCount] = useState(0);
 
-		const { img, title, description, price, id } = product;
+		const { img, title, description, price } = product;
 
-		const handleIncrement = () => {
-			setCount(count+1);
+		let handleIncrement = () => {
+			setCount(count += 1);
 			onAdd(product);
 		}
 
-		const handleDecrement = () => {
-			setCount(count-1);
+		let handleDecrement = () => {
+			setCount(count -= 1);
 			onRemove(product);
 		}
 
@@ -24,18 +24,23 @@ import './ProductItem.css';
 			<div className={'img'}><img src={img}/></div>
 			<div className={'title'}>{title}</div>
 			<div className={'description'}>{description}</div>
-			<div className={'price'}><span>Цена: <b>{price}</b> р.</span></div>
+			<div className={'price'}><span>Цена: <b>{price}</b> р/кг</span></div>
 
 			{/* контейнер с кнопками + - */}
 			<div className="btn-container">
-				<Button title={'+'} type={'add'} onClick={handleIncrement} />
+				{/* кнопка - */}
+				{/* {count === 0 ? (
+				<Button title={'-'} type={'remove'} onClick={handleDecrement} />
+				) : ""} */}
+				{count > 0 ? (
+					<Button title={'-'} type={'remove'} onClick={handleDecrement} />	
+				) : ""}
 
 				{/* поле с количеством */}
 				<div className={`${count !== 0 ? "card__badge" : "card__badge--hidden"}`}>{count}</div>
 
-				{count !== 0 ? (
-				<Button title={'-'} type={'remove'} onClick={handleDecrement} />
-				) : ""}
+				{/* кнопка + */}
+				<Button title={'+'} type={'add'} onClick={handleIncrement} />
 			</div>
 		</div>
 	)
