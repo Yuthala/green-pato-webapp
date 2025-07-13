@@ -5,6 +5,7 @@
   --tint: #AB3541;
   --background: #B4C277;
   --text-background: #F9FBE9;
+  --orange-accent: #E7A43B;
 }
 
 /*CUSTOM STYLES*/
@@ -20,4 +21,8 @@ body {
   background-color: var(--background);
   color: var(--primary);  /* color: var(--tg-theme-text-color); */
   font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
