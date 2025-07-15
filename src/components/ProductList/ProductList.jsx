@@ -9,7 +9,7 @@ import { useTelegram } from '../../hooks/useTelegram';
 const products = [
 	{id: '1', title: 'Картофель красный', price: 70, description: 'сорт Белароза. Вкусный, среднерассыпчатый, подходит как для супов, так и для салатов/вторых блюд', img: "img/potatoes.webp"},
 	{id: '2', title: 'Лук репчатый', price: 60, description: 'сорт Штутгартер, классический желтый лук с выраженным острым вкусом', img: "img/onion.webp"},
-	{id: '3', title: 'Чеснок', price: 200, description: 'Размер 3-5 см, разные сорта. Подходит для закруток и длительного хранения', img: "img/garlic.webp"},
+	{id: '3', title: 'Чеснок', price: 250, description: 'Размер 3-5 см, разные сорта. Подходит для закруток и длительного хранения', img: "img/garlic.webp"},
 	{id: '4', title: 'Кабачки цуккини', price: 50, description: 'Молодые цуккини с тонкой кожицей, молочными семенами и нежной мякотью', img: "img/zuccini.webp"},
 	{id: '5', title: 'Лук шалот', price: 120, description: 'Разновидность салатного лука с нежным, полуострым вкусом. Луковицы небольшие.', img: "img/shalot.webp"},
 	{id: '6', title: 'Огурец салатный', price: 80, description: 'Прекрасные вкусовые качества без горечи. Размер 10-12 см', img: "img/cucumber.webp"},

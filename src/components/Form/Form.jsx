@@ -14,6 +14,8 @@ const Form =() => {
 	const [street, setStreet] = useState('');
 	// Объект phone из формы
 	const [phone, setPhone] = useState('');
+	// Объект time из формы
+	const [time, setTime] = useState('');
 	// Объект tg
 	const {tg} = useTelegram();
 
@@ -22,10 +24,12 @@ const Form =() => {
 	const [nameDirty, setNameDirty] = useState(false)
 	const [phoneDirty, setPhoneDirty] = useState(false)
 	const [addressDirty, setStreetDirty] = useState(false)
+	const [timeDirty, setTimeDirty] = useState(false)
 	//Состояние, отражающее наличие ошибки
 	const [nameError, setNameError] = useState('Поле не может быть пустым')
 	const [phoneError, setPhoneError] = useState('Поле не может быть пустым')
 	const [streetError, setStreetError] = useState('Поле не может быть пустым')
+	const [timeError, setTimeError] = useState('Поле не может быть пустым')
 
 
 	// 1.2 Передача данных в Telegram
@@ -36,11 +40,12 @@ const Form =() => {
             name,
             street,
             phone,
+			time,
         };
 		
 	// 1.3 Вызов функции передачи объекта в Telegram 
         tg.sendData(JSON.stringify(data));
-    }, [name, street, phone])
+    }, [name, street, phone, time])
 
 	useEffect( ()=> {
 		tg.onEvent('mainButtonClicked', onSendData)
@@ -59,12 +64,16 @@ const Form =() => {
 
 	// 1.5 Отслеживание значений в элементах Формы, чтобы показать или скрыть Главную кнопку
 	useEffect( (formValid) => {
-		if(nameError || phoneError || streetError) {
+		if(nameError || phoneError || streetError || timeError) {
+			console.log('name', nameError);
+			console.log('phone', phoneError);
+			console.log('street', streetError);
+			console.log('time', timeError);
 			tg.MainButton.hide(!formValid);
 		} else {
 			tg.MainButton.show(formValid);
 		}
-	}, [nameError, phoneError, streetError])
+	}, [nameError, phoneError, streetError, timeError])
 
 	//Управление активностью инпутов
 	const blurHandler = (e) => {
@@ -78,6 +87,8 @@ const Form =() => {
 			case "street":
 				setStreetDirty(true);
 				break;
+			case "time":
+				setTimeDirty(true);
 		}
 	}
 
@@ -106,14 +117,25 @@ const Form =() => {
 		}
 	}
 
-	const onChangeStreet= (e) => {
+	const onChangeStreet = (e) => {
 		setStreet(e.target.value);
 		const re = /^[?!,.\/\-а-яА-ЯёЁ0-9\s]+$/;
 
 		if(!re.test(String(e.target.value).toLowerCase())) {
-			setStreetError('Допустимы русские буквы, цифры, знаки препинания')
+			setStreetError('Допустимы цифры, пробел, знаки препинания')
 		} else {
 			setStreetError('')
+		}
+	}
+
+	const onChangeTime = (e) => {
+		setTime(e.target.value);
+		const re = /^[а-яА-ЯёЁ0-9 ,.:;-]+$/;
+
+		if(!re.test(String(e.target.value).toLowerCase())) {
+			setTimeError('Допустимы русские буквы, цифры, пробел, знаки препинания')
+		} else {
+			setTimeError('')
 		}
 	}
 
@@ -124,7 +146,7 @@ const Form =() => {
 			<h4>необходимо заполнить все поля</h4>
 
 			{/* //если поле name активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(nameDirty && nameError) && <div className="warning">{nameError}</div>}
+			{(nameError) && <div className="warning">{nameError}</div>}
 			<input 
 				name="name"
 				className={'input'} 
@@ -137,7 +159,7 @@ const Form =() => {
 			/>
 {/* 
 			//если поле phone активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(phoneDirty && phoneError) && <div className="warning">{phoneError}</div>}
+			{(phoneError) && <div className="warning">{phoneError}</div>}
 			<input 
 			name="phone"
 				className={'input'} 
@@ -150,7 +172,7 @@ const Form =() => {
 			/>
 
 			{/* //если поле address активировано и в нем есть ошибка, выводим сообщение об ошибке пользователю */}
-			{(addressDirty && streetError) && <div className="warning">{streetError}</div>}
+			{(streetError) && <div className="warning">{streetError}</div>}
 			<input
 				name="street"
 				className={'input'} 
@@ -159,6 +181,18 @@ const Form =() => {
 				maxLength="100"
 				value={street}
 				onChange={e => onChangeStreet(e)}
+				// onBlur={e => blurHandler(e)}
+			/>
+
+			{(timeError) && <div className="warning">{timeError}</div>}
+			<input
+				name="time"
+				className={'input'} 
+				type="text" 
+				placeholder={'Желаемая дата и время доставки'}
+				maxLength="30"
+				value={time}
+				onChange={e => onChangeTime(e)}
 				// onBlur={e => blurHandler(e)}
 			/>
 		</div>
